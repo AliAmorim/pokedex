@@ -34,16 +34,33 @@ const pokedex = [
     tipo: 'Grass'
   }
 ]
-
+let pokemon = undefined
 //rotas
 app.get('/', function (req, res) {
-  res.render('index.ejs', { pokedex })
+  res.render('index.ejs', { pokedex, pokemon })
 })
 
-app.post('/add', (req, res) => {
+app.post('/cadastro', (req, res) => {
   const pokemon = req.body
   pokemon.id = pokedex.length + 1
   pokedex.push(pokemon)
+
+  res.redirect('/')
+})
+
+app.get('/detalhes/:id', (req, res) => {
+  const id = +req.params.id
+
+  pokemon = pokedex.find(pokemon => pokemon.id === id)
+  res.redirect('/')
+})
+
+app.post('/update/:id', (req, res) => {
+  const id = +req.params.id - 1 
+  const newPokemon = req.body
+  newPokemon.id = id + 1
+  pokedex[id] = newPokemon
+  pokemon = undefined
 
   res.redirect('/')
 })
