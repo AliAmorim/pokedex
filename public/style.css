@@ -27,7 +27,8 @@ main {
 section#cards{
   display: flex;
   justify-content: space-evenly;
-  margin-top: 6rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 section#cards div.card {
@@ -35,6 +36,7 @@ section#cards div.card {
   margin-left: 2rem;
   width: 20rem;
   box-shadow: 3px 3px rgb(9, 9, 8), -1em 0 0.4em rgb(157, 170, 243);
+  margin-top: 4rem;
 }
 section#cards div.card img {
   width: 100%;
@@ -47,4 +49,54 @@ section#cards div.card p {
   font-family: 'Times New Roman', Times, serif;
   padding-bottom: 1rem;
   text-align: center;
+}
+section#cards div.card p#id {
+  color: rgb(110, 108, 108);
+  font-size: 2rem;
+  text-align: right;
+  padding-right: 2rem;
+}
+section#cadastro {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 4rem;
+}
+section#cadastro h2{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 3rem;
+
+
+}
+section#cadastro form {
+  width: 30%;
+}
+
+section#cadastro form input{
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: groove 2px rgb(204, 34, 34);
+  margin: 1rem;
+}
+section#cadastro form label {
+  margin: 1rem;
+  font-weight: bold;
+  
+}
+section#cadastro form button {
+  padding: 0.7rem;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  font-size: medium;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+section#cadastro form button:hover {
+background-color: RED;
 }
