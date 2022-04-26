@@ -10,8 +10,14 @@
   <body>
     <header>
       <h1>Pokedex</h1>
+      <img src="/img/pokebola.png" alt="" />
     </header>
-
+    <nav>
+      <ul>
+        <li><a href="#cadastro">Cadastro</a></li>
+        <li><a href="#cards">Lista de Pokemon</a></li>
+      </ul>
+    </nav>
     <main>
       <section id="cadastro">
         <% if (pokemon == undefined) {%>
@@ -74,7 +80,7 @@
       </section>
 
       <section id="cards">
-        <h2>Lista de Pokemons cadastrados</h2>
+        <h2>Lista de Pokemon Cadastrados</h2>
 
         <% pokedex.forEach((pokemon) => { %>
 
@@ -85,9 +91,17 @@
           <p>Tipo: <%= pokemon.tipo %></p>
           <p id="id"><%= pokemon.id %></p>
           <a href="/detalhes/<%= pokemon.id %>">Editar</a>
+          <a id="apagar" href="/delete/<%= pokemon.id %>">Apagar</a>
         </div>
         <% }) %>
-      </section>  
+      </section>
     </main>
+    <footer>
+      <p>
+        <a href="https://www.instagram.com/japsamorim/" target="_blank"
+          >@japsamorim - Aline Amorim</a
+        >
+      </p>
+    </footer>
   </body>
 </html>

@@ -17,22 +17,39 @@ const pokedex = [
   },
 
   {
-    nome: 'Ivysaurr',
+    nome: 'Charmander',
     id: 2,
-    imagem: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png',
+    imagem: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png',
     descricao:
-      'When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.',
-    tipo: 'Grass'
+      'It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.',
+    tipo: 'Fire'
   },
 
   {
-    nome: 'Venusaur',
+    nome: 'Squirtle',
     id: 3,
-    imagem: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png',
+    imagem: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png',
     descricao:
-      'Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.',
-    tipo: 'Grass'
-  }
+      'When it retracts its long neck into its shell, it squirts out water with vigorous force.',
+    tipo: 'Water'
+  },
+  {
+    nome: 'Pidgey',
+    id: 4,
+    imagem: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/016.png',
+    descricao:
+      'Very docile. If attacked, it will often kick up sand to protect itself rather than fight back.',
+    tipo: 'Normal'
+  },
+
+  {
+    nome: 'Rattata',
+    id: 5,
+    imagem: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/019.png',
+    descricao:
+      'Will chew on anything with its fangs. If you see one, you can be certain that 40 more live in the area.',
+    tipo: 'Normal'
+  },
 ]
 let pokemon = undefined
 //rotas
@@ -45,7 +62,7 @@ app.post('/cadastro', (req, res) => {
   pokemon.id = pokedex.length + 1
   pokedex.push(pokemon)
 
-  res.redirect('/')
+  res.redirect('/#cards')
 })
 
 app.get('/detalhes/:id', (req, res) => {
@@ -56,13 +73,21 @@ app.get('/detalhes/:id', (req, res) => {
 })
 
 app.post('/update/:id', (req, res) => {
-  const id = +req.params.id - 1 
+  const id = +req.params.id - 1
   const newPokemon = req.body
   newPokemon.id = id + 1
   pokedex[id] = newPokemon
   pokemon = undefined
 
-  res.redirect('/')
+  res.redirect('/#cards')
+})
+
+app.get('/delete/:id', (req, res) => {
+  const id = +req.params.id - 1
+
+  delete pokedex[id]
+
+  res.redirect('/#cards')
 })
 
 app.listen(3000, () => {
