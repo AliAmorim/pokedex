@@ -1,6 +1,9 @@
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const app = express()
+
+const port = process.env.PORT || 3000
 
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')))
@@ -49,7 +52,7 @@ const pokedex = [
     descricao:
       'Will chew on anything with its fangs. If you see one, you can be certain that 40 more live in the area.',
     tipo: 'Normal'
-  },
+  }
 ]
 let pokemon = undefined
 //rotas
@@ -90,6 +93,4 @@ app.get('/delete/:id', (req, res) => {
   res.redirect('/#cards')
 })
 
-app.listen(3000, () => {
-
-})
+app.listen(port, () => {})
